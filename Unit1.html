@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 1: JavaScript Basics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #0056b3;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #0056b3;
+            margin-top: 20px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .example-output {
+            background-color: #e0ffe0;
+            padding: 10px;
+            border-left: 5px solid #008000;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        .note {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        .code-block {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap; /* Ensures long lines wrap */
+            word-wrap: break-word; /* Ensures long words break */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 1: JavaScript Basics</h1>
+
+        <p>This unit introduces the fundamental concepts of JavaScript, covering its syntax, data types, operators, control flow statements, and built-in functions.</p>
+
+        <h2>1. JavaScript Basics: Syntax</h2>
+        <p>JavaScript code is embedded within HTML documents using the <code>&lt;script&gt;</code> tag. The browser interprets all text between the opening <code>&lt;script&gt;</code> and closing <code>&lt;/script&gt;</code> tags as a script.</p>
+
+        <h3>Script Tag Attributes:</h3>
+        <ul>
+            <li><strong><code>language</code></strong>: Specifies the scripting language (e.g., "javascript").</li>
+            <li><strong><code>type</code></strong>: Specifies the MIME type of the script (e.g., "text/javascript").</li>
+        </ul>
+
+        <h3>Placement of JavaScript:</h3>
+        <ul>
+            <li><strong>HEAD section:</strong> JavaScript placed in the <code>&lt;head&gt;</code> section loads before the <code>&lt;body&gt;</code> content. This is useful when page content depends on the JavaScript code, ensuring the script is loaded first.
+                <pre class="code-block"><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;JavaScript place on head&lt;/title&gt;
+    &lt;script type="text/javascript"&gt;
+        document.write("Hello World!");
+        document.write("&lt;h2&gt; Hello World! &lt;/h2&gt;");
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </li>
+            <li><strong>BODY section:</strong> JavaScript placed in the <code>&lt;body&gt;</code> section loads as the HTML content loads. This can improve page loading speed as content loading is not blocked by JavaScript execution.
+                <pre class="code-block"><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;JavaScript place on body tag&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;script type="text/javascript"&gt;
+        document.write("Hello World!");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </li>
+            <li><strong>Both HEAD and BODY sections:</strong> JavaScript can be written in both sections.</li>
+        </ul>
+
+        <h2>2. Comments</h2>
+        <p>Comments are non-executable lines in the code that provide information about the program. They are ignored during execution.</p>
+        <ul>
+            <li><strong>Single-line comments:</strong> Start with <code>//</code>.</li>
+            <li><strong>Multi-line comments:</strong> Enclosed between <code>/*</code> and <code>*/</code>.</li>
+        </ul>
+        <h3>Example:</h3>
+        <pre class="code-block"><code>&lt;script&gt;
+var one = 1; // this is a single line comment
+/* this is multi line comment*/
+var two = 2;
+var three = 3;
+&lt;/script&gt;</code></pre>
+
+        <h2>3. JavaScript Data Types</h2>
+        <p>Data types classify the kind of values that can be stored and manipulated in a programming language. JavaScript has two main categories of data types:</p>
+
+        <h3>Primitive Data Types:</h3>
+        <p>These are predefined and immutable (cannot be changed once created).</p>
+        <ul>
+            <li><strong>Number:</strong> Represents both integer and floating-point numbers.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>var a = 5; // Numeric integer value
+var b = 10.5; // Numeric float value
+var c = -30.47; // Negative numeric float value
+var d = -35; // Negative Numeric integer value
+var y = 123e5; // 12300000 (Exponential Notation)
+var z = 123e-5; // 0.00123 (Exponential Notation)</code></pre>
+            </li>
+            <li><strong>String:</strong> A sequence of characters enclosed in single (<code>'</code>) or double (<code>"</code>) quotes. Characters are indexed starting from 0.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>var name = 'Hello, I am run this town.!'; // Single quote
+var name = "Hello, I am run this town.!"; // Double quote
+var name = "Hello, I'm run this town.!"; // Single quote use inside string
+var name = ""; // an empty string</code></pre>
+            </li>
+            <li><strong>Boolean:</strong> Represents logical entities with two values: <code>true</code> or <code>false</code>. Used for logical operations and condition determination.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>var val1 = true;
+var val2 = false;</code></pre>
+            </li>
+            <li><strong>Null:</strong> Indicates the intentional absence of any object value. A variable declared but assigned <code>null</code> means its value is empty.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>var str = null; // Value assign null
+var car = ""; // The value is "", the type of is "string"
+document.write(str == undefined); // Returns true
+document.write(null == undefined); // Equality check Returns true
+document.write(null === undefined); // Equality with type check Returns false</code></pre>
+            </li>
+            <li><strong>Undefined:</strong> A variable that has been declared but has not yet been assigned a value has the value <code>undefined</code>. Its type is also <code>undefined</code>. Uninitialized variables are equal to <code>null</code> in a loose comparison.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>var str; // Declare variable without value. Identify as undefined value.
+var car; // Value is undefined.
+car = undefined; // Value is undefined, type is undefined</code></pre>
+            </li>
+            <li><strong>Symbol:</strong> (Not detailed in the provided text, but listed as a primitive type).</li>
+        </ul>
+
+        <h3>Non-primitive (Object) Data Types:</h3>
+        <p>These are reference types, created by the programmer, and are mutable (their values can be changed after creation). They can contain built-in or user-defined objects.</p>
+        <ul>
+            <li><strong>Built-in Object Types:</strong>
+                <ul>
+                    <li>Objects</li>
+                    <li>Math objects</li>
+                    <li>Functions objects</li>
+                    <li>Dates objects</li>
+                    <li>Arrays objects</li>
+                    <li>String objects</li>
+                </ul>
+            </li>
+            <li><strong>Creating Objects:</strong>
+                <h3>Syntax:</h3>
+                <pre class="code-block"><code>var objectname = new Object(); // Create object
+var objectname = {}; // Create object
+var objectname = new Object(); // Declare object
+var objectname = new Object([param1, param2, ..., paramN]); // with parameter</code></pre>
+                <h3>Examples:</h3>
+                <ul>
+                    <li><strong>Array:</strong>
+                        <pre class="code-block"><code>var cars = new Array();
+var cars = new Array("Saab", "Volvo", "BMW");
+var cars = ["Saab", "Volvo", "BMW"];</code></pre>
+                    </li>
+                    <li><strong>Object Literal:</strong>
+                        <pre class="code-block"><code>const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};</code></pre>
+                    </li>
+                    <li><strong>Date:</strong>
+                        <pre class="code-block"><code>var d = new Date();
+const d = new Date("2022-03-25");</code></pre>
+                    </li>
+                    <li><strong>String (Object):</strong>
+                        <pre class="code-block"><code>let x = "John";
+let y = new String("John");</code></pre>
+                    </li>
+                    <li><strong>Math:</strong>
+                        <pre class="code-block"><code>let x = Math.PI;
+let y = Math.sqrt(16);</code></pre>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>4. JavaScript Variables</h2>
+        <p>Variables are containers for storing data. They must be identified with unique names called identifiers.</p>
+
+        <h3>Naming Rules for Variables:</h3>
+        <ol>
+            <li>Can contain letters (A-Z, a-z), digits (0-9), underscores (<code>_</code>), and dollar signs (<code>$</code>).</li>
+            <li>Must begin with a letter, underscore, or dollar sign. Cannot start with a number.</li>
+            <li>Are case-sensitive (<code>y</code> and <code>Y</code> are different variables).</li>
+            <li>Cannot be JavaScript reserved keywords (e.g., <code>if</code>, <code>switch</code>, <code>else</code>, <code>for</code>, <code>var</code>, <code>let</code>, <code>const</code>).</li>
+        </ol>
+
+        <h3>Example (Invalid Names):</h3>
+        <pre class="code-block"><code>var _abc = "Hi!";
+var abc = "Hello!";
+var 9abc = "Bye!"; // This is invalid
+var for = "9"; // This is invalid (reserved keyword)</code></pre>
+
+        <h3>Declaring Variables:</h3>
+        <ul>
+            <li><strong>Automatically:</strong>
+                <pre class="code-block"><code>x = 5; // automatically declared</code></pre>
+            </li>
+            <li><strong>Using <code>var</code> keyword:</strong> (Function-scoped, can be re-declared and re-assigned)
+                <pre class="code-block"><code>var y = 6; // declared Using var keyword</code></pre>
+            </li>
+            <li><strong>Using <code>let</code> keyword:</strong> (Block-scoped, can be re-assigned but not re-declared in the same scope)
+                <pre class="code-block"><code>let z = 12; // declared Using let keyword</code></pre>
+            </li>
+            <li><strong>Using <code>const</code> keyword:</strong> (Block-scoped, cannot be re-assigned or re-declared)
+                <pre class="code-block"><code>const a = 3.14; // declared Using const keyword</code></pre>
+            </li>
+        </ul>
+
+        <h3>Variable Initialization:</h3>
+        <p>Storing a value in a variable using the assignment operator (<code>=</code>). Multiple variables can be declared and initialized in a single statement, separated by commas.</p>
+        <ul>
+            <li><strong>Syntax:</strong>
+                <pre class="code-block"><code>var variable_name = value;
+var var1 = val1, var2 = val2, ..., varN = valN;</code></pre>
+            </li>
+            <li><strong>Example:</strong>
+                <pre class="code-block"><code>var num = 5;
+var num1 = 5, num2 = 6, num3 = 7;</code></pre>
+            </li>
+        </ul>
+
+        <h3>Variable Scope:</h3>
+        <p>Determines where a variable can be accessed.</p>
+        <ul>
+            <li><strong>Global Scope:</strong> Variables declared outside any function. Accessible from anywhere in the code (inside and outside functions).
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+var data = 200; // global variable
+function a() {
+    document.write(data);
+}
+function b() {
+    document.write(data);
+}
+a(); // calling JavaScript function
+b();
+&lt;/script&gt;</code></pre>
+            </li>
+            <li><strong>Local Scope:</strong> Variables declared inside a block or function. Accessible only within that block or function.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+var myVar = "global"; // Declare a global variable
+function abc() {
+    var myVar = "local"; // Declare a local variable
+    document.write(myVar);
+}
+&lt;/script&gt;</code></pre>
+            </li>
+        </ul>
+
+        <h2>5. JavaScript Literals</h2>
+        <p>Literals represent fixed values that cannot be changed.</p>
+        <ul>
+            <li><strong>Numeric Literal:</strong> Integer values (decimal, hexadecimal, octal).
+                <h3>Example:</h3>
+                <pre class="code-block"><code>120; // decimal literal
+021434; // octal literal
+0x4507; // hexadecimal literal</code></pre>
+            </li>
+            <li><strong>Floating-point Literal:</strong> Numbers with a decimal point, possibly with an exponent.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>6.99689; // floating-point literal
+-167.39894; // negative floating-point literal</code></pre>
+            </li>
+            <li><strong>Boolean Literal:</strong> <code>true</code> or <code>false</code>.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>true; // Boolean literal
+false; // Boolean literal</code></pre>
+            </li>
+            <li><strong>String Literal:</strong> Characters enclosed in single or double quotes.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>"Study"; // String literal
+'tonight'; // String literal</code></pre>
+            </li>
+            <li><strong>Array Literal:</strong> An array created using square brackets <code>[]</code> with or without values.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>["Abhishek", "Supriya", "Joey"]; // Array literal
+let students = ["Abhishek", "Supriya", "Joey"]; // Array literal</code></pre>
+            </li>
+            <li><strong>Object Literal:</strong> A collection of key-value pairs enclosed in curly braces <code>{}</code>.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>var games = {cricket: 11, chess: 2, carom: 4}; // Object literal</code></pre>
+            </li>
+        </ul>
+
+        <h2>6. JavaScript Type Conversion (Casting)</h2>
+        <p>The process of converting data from one data type to another.</p>
+        <ul>
+            <li><strong>Implicit Conversion (Automatic Type Conversion):</strong> Done automatically by JavaScript.
+                <h3>Example:</h3>
+                <p>When using the <code>+</code> operator with a string and a number, the number is converted to a string, and concatenation occurs.</p>
+                <pre class="code-block"><code>&lt;script&gt;
+document.write("100" + 24 + "&lt;br /&gt;"); // Output: 10024
+document.write('100' + false + "&lt;br /&gt;"); // Output: 100false
+document.write("100" + null + "&lt;br /&gt;"); // Output: 100null
+document.write("100" + undefined + "&lt;br /&gt;"); // Output: 100undefined
+&lt;/script&gt;</code></pre>
+            </li>
+            <li><strong>Explicit Conversion (Manual Type Conversion):</strong> Done manually by the programmer using built-in functions.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+document.write(Number("200") + "&lt;br /&gt;"); // Output: 200
+document.write(Number("100AB-2") + "&lt;br /&gt;"); // Output: NaN
+document.write(Number(false) + "&lt;br /&gt;"); // Output: 0
+document.write(Number(null) + "&lt;br /&gt;"); // Output: 0
+document.write(Number(undefined) + "&lt;br /&gt;"); // Output: NaN
+document.write(+"200" + "&lt;br /&gt;"); // Output: 200 (Unary plus operator for conversion)
+&lt;/script&gt;</code></pre>
+            </li>
+        </ul>
+
+        <h2>7. JavaScript Operators</h2>
+        <p>Operators are special symbols that perform operations on one or more operands.</p>
+        <ul>
+            <li><strong>Arithmetic Operators:</strong> Perform mathematical calculations.
+                <p><code>+</code> (Addition), <code>-</code> (Subtraction), <code>*</code> (Multiplication), <code>/</code> (Division), <code>%</code> (Modulus), <code>++</code> (Increment), <code>--</code> (Decrement).</p>
+                <h3>Examples:</h3>
+                <pre class="code-block"><code>var x = 10, y = 5;
+document.write(x + y); // RESULT: 15
+document.write(x - y); // RESULT: 5
+document.write(x * y); // RESULT: 50
+document.write(x / y); // RESULT: 2
+document.write(x % y); // RESULT: 0
+// Increment/Decrement
+var x = 10;
+document.write(x++); // POST INCREMENT: x: 10, after increment x become now 11
+document.write(++x); // PRE INCREMENT: x: 11, before increment x become now 11
+document.write(x--); // POST DECREMENT: x: 10, after decrement x become now 9
+document.write(--x); // PRE DECREMENT: x: 9, before decrement x become now 9</code></pre>
+            </li>
+            <li><strong>Assignment Operators:</strong> Assign values to variables.
+                <p><code>=</code> (Simple Assignment), <code>+=</code> (Add and Assignment), <code>-=</code> (Subtract and Assignment), <code>*=</code> (Multiply and Assignment), <code>/=</code> (Divide and Assignment), <code>%=</code> (Modulus and Assignment).</p>
+                <h3>Examples:</h3>
+                <pre class="code-block"><code>var y = 10; var x = y; // x=10
+var x = 10, y = 5;
+x += y; // x=15
+x -= y; // x=5
+x *= y; // x=50
+x /= y; // x=2
+x %= y; // x=0</code></pre>
+            </li>
+            <li><strong>Comparison Operators:</strong> Compare two values and return a boolean result (<code>true</code> or <code>false</code>).
+                <p><code>==</code> (Equal), <code>!=</code> (Not Equal), <code>&gt;</code> (Greater than), <code>&lt;</code> (Less than), <code>&gt;=</code> (Greater than or Equal to), <code>&lt;=</code> (Less than or Equal to).</p>
+                <h3>Examples:</h3>
+                <pre class="code-block"><code>var a = 5, b = 5;
+document.write(a == b); // OUTPUT: true
+var a = 5, b = 10;
+document.write(a != b); // OUTPUT: true
+document.write(a > b); // OUTPUT: false
+document.write(a < b); // OUTPUT: true
+var a = 5, b = 5;
+document.write(a >= b); // OUTPUT: true
+document.write(a <= b); // OUTPUT: true</code></pre>
+            </li>
+            <li><strong>Logical Operators:</strong> Perform logical operations on Boolean values, combining conditions.
+                <p><code>&amp;&amp;</code> (Logical AND), <code>||</code> (Logical OR), <code>!</code> (Logical NOT).</p>
+                <h3>Examples:</h3>
+                <pre class="code-block"><code>var a = 5, b = 10;
+document.write((a != b) && (a < b)); // OUTPUT: returns true
+document.write((a > b) || (a == b)); // OUTPUT: returns false
+document.write((a < b) || (a == b)); // OUTPUT: returns true
+document.write(!(a < b)); // OUTPUT: returns false
+document.write(!(a > b)); // OUTPUT: returns true</code></pre>
+            </li>
+            <li><strong>Conditional Operator (Ternary Operator):</strong> A shorthand for an <code>if-else</code> statement.
+                <h3>Syntax:</h3>
+                <p><code>condition ? value1 : value2;</code></p>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>var a = 10, b = 5;
+var c = a > b ? a : b; // value of c would be 10
+var d = a > b ? b : a; // value of d would be 5</code></pre>
+            </li>
+            <li><strong>String Concatenation:</strong> The <code>+</code> operator performs concatenation when one of the operands is a string.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>let a = 5, b = "Hello", c = "World! ", d = 10;
+document.write(a + b); // returns "5Hello"
+document.write(b + c); // returns "Hello World!"
+document.write(a + d); // returns 15
+document.write(b + true); // returns "Hello true"
+document.write(c - b); // returns NaN; - operator can only use with numbers</code></pre>
+            </li>
+        </ul>
+
+        <h2>8. User Interaction through Dialog Boxes (Popup Boxes)</h2>
+        <p>JavaScript provides built-in global functions to display popup message boxes.</p>
+        <ul>
+            <li><strong><code>alert(message)</code>:</strong> Displays a popup box with a specified message and an "OK" button. Code execution pauses until "OK" is clicked.
+                <h3>Syntax:</h3>
+                <p><code>alert("your message here");</code></p>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+function showAlert() {
+    alert("One click event on button");
+}
+&lt;/script&gt;
+&lt;button onclick="showAlert()"&gt;Click for Alert&lt;/button&gt;</code></pre>
+            </li>
+            <li><strong><code>prompt(message, defaultValue)</code>:</strong> Displays a popup box with a message, an input field, and "OK" and "Cancel" buttons. Returns the user's input (or <code>null</code> if "Cancel" is clicked).
+                <h3>Syntax:</h3>
+                <p><code>prompt("your message", "default value");</code></p>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+function showPrompt() {
+    var a;
+    a = prompt("Enter your Name", "");
+    if (a !== null) { // Check if user didn't cancel
+        alert("Hello " + a);
+    } else {
+        alert("Prompt cancelled.");
+    }
+}
+&lt;/script&gt;
+&lt;button onclick="showPrompt()"&gt;Click for Prompt&lt;/button&gt;</code></pre>
+            </li>
+            <li><strong><code>confirm(message)</code>:</strong> Displays a popup box with a message and "OK" and "Cancel" buttons. Returns <code>true</code> if "OK" is clicked, <code>false</code> if "Cancel" is clicked.
+                <h3>Syntax:</h3>
+                <p><code>confirm("your message");</code></p>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+function showConfirm() {
+    var r = confirm("Press a button");
+    if (r == true) {
+        alert("You pressed OK!");
+    } else {
+        alert("You pressed Cancel!");
+    }
+}
+&lt;/script&gt;
+&lt;button onclick="showConfirm()"&gt;Click for Confirm&lt;/button&gt;</code></pre>
+            </li>
+        </ul>
+
+        <h2>9. Built-in Functions</h2>
+        <ul>
+            <li><strong><code>parseInt(string, radix)</code>:</strong> Parses a string argument and returns an integer. <code>radix</code> specifies the base of the number (2 to 36).
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+document.write("parseInt('10', 10): " + parseInt("10", 10) + "&lt;br&gt;"); // Output: 10
+document.write("parseInt('10.00'): " + parseInt("10.00") + "&lt;br&gt;"); // Output: 10
+document.write("parseInt('10.33'): " + parseInt("10.33") + "&lt;br&gt;"); // Output: 10
+document.write("parseInt('34 45 66'): " + parseInt("34 45 66") + "&lt;br&gt;"); // Output: 34
+document.write("parseInt('60'): " + parseInt("60") + "&lt;br&gt;"); // Output: 60
+document.write("parseInt('40 years'): " + parseInt("40 years") + "&lt;br&gt;"); // Output: 40
+document.write("parseInt('He was 40'): " + parseInt("He was 40") + "&lt;br&gt;"); // Output: NaN
+&lt;/script&gt;</code></pre>
+            </li>
+            <li><strong><code>parseFloat(value)</code>:</strong> Parses a string argument and returns a floating-point number. Ignores leading/trailing whitespace. Returns <code>NaN</code> if the string doesn't start with a valid number.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+document.write("parseFloat('40.00'): " + parseFloat("40.00") + "&lt;br&gt;"); // Output: 40
+document.write("parseFloat('40'): " + parseFloat("40") + "&lt;br&gt;"); // Output: 40
+document.write("parseFloat('40 years'): " + parseFloat("40 years") + "&lt;br&gt;"); // Output: 40
+document.write("parseFloat('40 H'): " + parseFloat("40 H") + "&lt;br&gt;"); // Output: 40
+document.write("parseFloat('H40'): " + parseFloat("H40") + "&lt;br&gt;"); // Output: NaN
+&lt;/script&gt;</code></pre>
+            </li>
+            <li><strong><code>isNaN(value)</code>:</strong> Checks whether a given value is <code>NaN</code> (Not a Number). Returns <code>true</code> if the value is <code>NaN</code>, <code>false</code> otherwise.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+var value1 = 123;
+var value2 = NaN;
+document.write("Value1 is " + isNaN(value1) + "&lt;br&gt;"); // Output: Value1 is false
+document.write("Value2 is " + isNaN(value2) + "&lt;br&gt;"); // Output: Value2 is true
+&lt;/script&gt;</code></pre>
+            </li>
+            <li><strong><code>Number(value)</code>:</strong> Converts a variable or value into a number. Returns a primitive number value.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+var x = 3.14;
+var y = 3;
+var z = "ABC";
+document.write("the value of x: " + Number(x) + "&lt;br&gt;"); // Output: the value of x: 3.14
+document.write("the value of y: " + Number(y) + "&lt;br&gt;"); // Output: the value of y: 3
+document.write("the value of z: " + Number(z) + "&lt;br&gt;"); // Output: the value of z: NaN
+&lt;/script&gt;</code></pre>
+            </li>
+        </ul>
+
+        <h2>10. Flow Control Statements: Decision-Making and Looping</h2>
+        <p>Control flow statements determine the order in which instructions are executed.</p>
+
+        <h3>Decision-Making (Conditional Statements):</h3>
+        <p>Perform different actions based on different conditions.</p>
+        <ul>
+            <li><strong><code>if</code> Statement:</strong> Executes a block of code if a specified expression is <code>true</code>.
+                <h3>Syntax:</h3>
+                <pre class="code-block"><code>if (expression) {
+    // Statement(s) to be executed if expression is true
+}</code></pre>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+if (1 > 0) {
+    document.write("1 is greater than 0&lt;br&gt;");
+}
+if (1 < 0) {
+    document.write("1 is less than 0&lt;br&gt;"); // This will not be executed
+}
+&lt;/script&gt;</code></pre>
+            </li>
+            <li><strong><code>if...else</code> Statement:</strong> Executes one block of code if the expression is <code>true</code>, and another block if it's <code>false</code>.
+                <h3>Syntax:</h3>
+                <pre class="code-block"><code>if (expression) {
+    // Statement(s) to be executed if expression is true
+} else {
+    // Statement(s) to be executed if expression is false
+}</code></pre>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+var mySal = 500;
+var yourSal = 1000;
+if (mySal > yourSal) {
+    document.write("My Salary is greater than your salary&lt;br&gt;");
+} else {
+    document.write("My Salary is less than or equal to your salary&lt;br&gt;");
+}
+&lt;/script&gt;</code></pre>
+            </li>
+            <li><strong><code>else if...</code> Statement (Ladder):</strong> Allows checking multiple conditions sequentially.
+                <h3>Syntax:</h3>
+                <pre class="code-block"><code>if (expression1) {
+    // Statement(s) if expression1 is true
+} else if (expression2) {
+    // Statement(s) if expression2 is true
+} else if (expression3) {
+    // Statement(s) if expression3 is true
+} else {
+    // Statement(s) if no expression is true
+}</code></pre>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+var a = 20;
+if (a == 10) {
+    document.write("a is equal to 10&lt;br&gt;");
+} else if (a == 15) {
+    document.write("a is equal to 15&lt;br&gt;");
+} else if (a == 20) {
+    document.write("a is equal to 20&lt;br&gt;");
+} else {
+    document.write("a is not equal to 10, 15 or 20&lt;br&gt;");
+}
+&lt;/script&gt;</code></pre>
+            </li>
+            <li><strong><code>switch</code> Statement:</strong> Executes different blocks of code based on the value of an expression.
+                <ul>
+                    <li><strong><code>break</code>:</strong> Terminates the <code>switch</code> statement and continues execution after it.</li>
+                    <li><strong><code>default</code>:</strong> Specifies the code to execute if none of the <code>case</code> labels match the expression's value.</li>
+                </ul>
+                <h3>Syntax:</h3>
+                <pre class="code-block"><code>switch (expression) {
+    case condition1:
+        statement(s);
+        break;
+    case condition2:
+        statement(s);
+        break;
+    // ...
+    default:
+        statement(s);
+}</code></pre>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+var weekname = "wednesday";
+document.write("Today is: ");
+switch (weekname) {
+    case "monday":
+        document.writeln("Monday working day.&lt;br&gt;");
+        break;
+    case "tuesday":
+        document.writeln("Tuesday working day.&lt;br&gt;");
+        break;
+    case "wednesday":
+        document.writeln("Wednesday government holiday.&lt;br&gt;");
+        break;
+    case "thursday":
+        document.writeln("Thursday working day.&lt;br&gt;");
+        break;
+    case "friday":
+        document.writeln("Friday is a last working day of the week.&lt;br&gt;");
+        break;
+    case "saturday":
+        document.writeln("Saturday week end.&lt;br&gt;");
+        break;
+    case "sunday":
+        document.writeln("Sunday week end.&lt;br&gt;");
+        break;
+    default:
+        document.writeln("No any case found.&lt;br&gt;");
+}
+&lt;/script&gt;</code></pre>
+            </li>
+            <li><strong><code>break</code> Statement (in loops):</strong> Terminates the current loop and transfers execution to the statement immediately following the loop.
+                <h3>Syntax:</h3>
+                <p><code>break;</code> or <code>break label;</code></p>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+var i = 0;
+document.write("Break Example: ");
+while (i <= 10) {
+    if (i == 5) {
+        document.write("terminated, i = 5&lt;br&gt;");
+        break;
+    }
+    document.write(i + " ");
+    i++;
+}
+&lt;/script&gt;
+&lt;!-- Expected Output: Break Example: 0 1 2 3 4 terminated, i = 5 --&gt;</code></pre>
+            </li>
+            <li><strong><code>continue</code> Statement:</strong> Skips the current iteration of a loop and proceeds to the next iteration.
+                <h3>Syntax:</h3>
+                <p><code>continue;</code></p>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+var i = 0;
+document.write("Continue Example: ");
+while (i < 10) {
+    i++;
+    if (i == 5) {
+        document.write("skipped, i = 5 ");
+        continue;
+    }
+    document.write(i + " ");
+}
+&lt;/script&gt;
+&lt;!-- Expected Output: Continue Example: 1 2 3 4 skipped, i = 5 6 7 8 9 10 --&gt;</code></pre>
+            </li>
+        </ul>
+
+        <h3>Looping Statements:</h3>
+        <p>Execute a block of code repeatedly.</p>
+        <ul>
+            <li><strong><code>for</code> Loop:</strong> Executes a block of code a specific number of times, based on initialization, condition, and increment/decrement.
+                <h3>Syntax:</h3>
+                <p><code>for (initialization; condition; increment/decrement) { statements; }</code></p>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+for (var num = 1; num <= 3; num++) {
+    document.write(num + ": iteration&lt;br&gt;");
+}
+document.write("End of for loop&lt;br&gt;");
+&lt;/script&gt;
+&lt;!-- Expected Output:
+1: iteration
+2: iteration
+3: iteration
+End of for loop
+--&gt;</code></pre>
+            </li>
+            <li><strong><code>while</code> Loop:</strong> Executes a block of code as long as a specified condition is <code>true</code>. The condition is checked before each iteration.
+                <h3>Syntax:</h3>
+                <p><code>while (condition) { statements; increment; }</code></p>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+var number = 1;
+document.write("While Loop Example:&lt;br&gt;");
+while (number <= 3) {
+    document.writeln(number + " times&lt;br&gt;");
+    number++;
+}
+&lt;/script&gt;
+&lt;!-- Expected Output:
+While Loop Example:
+1 times
+2 times
+3 times
+--&gt;</code></pre>
+            </li>
+            <li><strong><code>do...while</code> Loop:</strong> Executes a block of code at least once, and then repeatedly as long as a specified condition is <code>true</code>. The condition is checked after each iteration.
+                <h3>Syntax:</h3>
+                <p><code>do { statements; increment; } while (condition);</code></p>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+var number = 1;
+document.write("Do-While Loop Example:&lt;br&gt;");
+do {
+    document.writeln(number + " times&lt;br&gt;");
+    number++;
+} while (number <= 3);
+&lt;/script&gt;
+&lt;!-- Expected Output:
+Do-While Loop Example:
+1 times
+2 times
+3 times
+--&gt;</code></pre>
+            </li>
+        </ul>
+
+        <h2>11. Array</h2>
+        <p>The JavaScript <code>Array</code> object allows storing multiple values in a single variable. Arrays can hold various data types and are accessed by numeric indices starting from 0.</p>
+        <ul>
+            <li><strong>Creating a JavaScript Array:</strong>
+                <ul>
+                    <li><strong>Array Literal Method:</strong>
+                        <h3>Syntax:</h3>
+                        <p><code>my_array = [value1, value2, ..., valueN];</code></p>
+                        <h3>Example:</h3>
+                        <pre class="code-block"><code>var numArr = [10, 20, 30, 40, 50];
+var domain = [".com", ".net", ".org", ".gov"];</code></pre>
+                    </li>
+                    <li><strong>Built-in Array Constructor Method:</strong>
+                        <h3>Syntax:</h3>
+                        <p><code>my_array = new Array(value1, value2, ..., valueN);</code> or <code>my_array = new Array(array_size);</code></p>
+                        <h3>Example:</h3>
+                        <pre class="code-block"><code>var numArr = new Array(10, 20, 30, 40, 50);
+var domain = new Array(".com", ".net", ".org", ".gov");
+var emptyArray = new Array(10); // an empty array of length 10</code></pre>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Accessing Array Elements:</strong> Elements are accessed using their index in square brackets.
+                <h3>Syntax:</h3>
+                <p><code>arrayName[index]</code></p>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script type="text/javascript"&gt;
+// Create empty array
+var domain = new Array();
+// Initializing (Assigning) values
+domain[0] = ".com";
+domain[1] = ".net";
+domain[2] = ".org";
+domain[3] = ".gov";
+// Accessing Array Elements
+document.write("Domain 0: " + domain[0] + "&lt;br&gt;");
+document.write("Domain 1: " + domain[1] + "&lt;br&gt;");
+document.write("Domain 2: " + domain[2] + "&lt;br&gt;");
+document.write("Domain 3: " + domain[3] + "&lt;br&gt;");
+&lt;/script&gt;
+&lt;!-- Expected Output:
+Domain 0: .com
+Domain 1: .net
+Domain 2: .org
+Domain 3: .gov
+--&gt;</code></pre>
+            </li>
+        </ul>
+
+        <h2>12. User-defined Functions</h2>
+        <p>Functions are reusable blocks of code that perform a specific task. They help in organizing code and avoiding repetition.</p>
+        <ul>
+            <li><strong>Function Declaration/Definition:</strong>
+                <h3>Syntax:</h3>
+                <pre class="code-block"><code>function functionName(arguments/parameter) {
+    statements
+}</code></pre>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script type="text/javascript"&gt;
+function msgfun() { // function definition
+    document.write("Hello world from msgfun!&lt;br&gt;"); // statements
+}
+msgfun(); // calling the function
+&lt;/script&gt;</code></pre>
+            </li>
+            <li><strong>Calling a Function:</strong> Executing the function by its name followed by parentheses <code>()</code>.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+function greet() {
+    document.write("Hello World from greet!&lt;br&gt;");
+}
+greet(); // calling function
+&lt;/script&gt;</code></pre>
+            </li>
+            <li><strong>Function Parameters (Arguments):</strong> Variables listed inside the parentheses in the function definition, used to pass values into the function.
+                <h3>Syntax:</h3>
+                <pre class="code-block"><code>function functionName(parameter1, parameter2, parameter3) {
+    // statements
+}</code></pre>
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+function greetWithNames(firstName, lastName) {
+    document.write("Hello " + firstName + " " + lastName + "!&lt;br&gt;");
+}
+greetWithNames("Bill", "Gates"); // values will be passed to function
+&lt;/script&gt;
+&lt;!-- Expected Output: Hello Bill Gates! --&gt;</code></pre>
+            </li>
+            <li><strong>Return a Value From Function:</strong> A function can send a value back to the calling code using the <code>return</code> keyword.
+                <h3>Example:</h3>
+                <pre class="code-block"><code>&lt;script&gt;
+var add = function (num1, num2) {
+    return num1 + num2; // Return a value
+};
+var result = add(10, 20); // values will be passed
+document.write("Result of addition: " + result + "&lt;br&gt;");
+&lt;/script&gt;
+&lt;!-- Expected Output: Result of addition: 30 --&gt;</code></pre>
+            </li>
+        </ul>
+
+        <p class="note"><strong>Note:</strong> Some JavaScript examples use <code>document.write()</code> for simplicity. In modern web development, it's generally recommended to manipulate the DOM (Document Object Model) using methods like <code>document.getElementById().innerHTML = ...</code> or <code>document.createElement()</code> for dynamic content updates.</p>
+
+    </div>
+</body>
+</html>
